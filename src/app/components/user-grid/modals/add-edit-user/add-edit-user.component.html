@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+  <div class="k-form-field">
+      <kendo-textbox-container class="input-modal-size" floatingLabel="User Name ">
+          <input kendoTextBox type="text" formControlName="userName" />
+      </kendo-textbox-container>
+      <div class="alertSize" *ngIf="userName.invalid && userName.touched">User Name
+          is required</div>
+  </div>
+
+  <div class="k-form-field">
+      <kendo-textbox-container class="input-modal-size" floatingLabel="First Name">
+          <input kendoTextBox type="text" formControlName="firstName" />
+      </kendo-textbox-container>
+      <div class="alertSize" *ngIf="firstName.invalid && firstName.touched">First Name
+          is required</div>
+  </div>
+  <div class="k-form-field">
+    <kendo-textbox-container class="input-modal-size" floatingLabel="Last Name">
+        <input kendoTextBox type="text" formControlName="lastName" />
+    </kendo-textbox-container>
+    <div class="alertSize" *ngIf="lastName.invalid && lastName.touched">Last Name
+        is required</div>
+</div>
+<div class="k-form-field">
+  <kendo-textbox-container class="input-modal-size" floatingLabel="Phone">
+      <input kendoTextBox type="text" formControlName="phone" />
+  </kendo-textbox-container>
+  <div class="alertSize" *ngIf="phone.invalid && phone.touched">Phone
+      is required</div>
+</div>
+
+<div class="k-form-field">
+  <kendo-textbox-container class="input-modal-size" floatingLabel="Slack Web Hook">
+      <input kendoTextBox type="text" formControlName="slackWebHook" />
+  </kendo-textbox-container>
+  <div class="alertSize" *ngIf="slackWebHook.invalid && slackWebHook.touched">Phone
+      is required</div>
+</div>
+
+  <div>
+      <div class="alertSize" *ngIf="showAlertMsg">Please fill required fields</div>
+      <button class="float-right btn-design" type="button" *ngIf="!data" (click)="addEditUser(true)">Add</button>
+      <button class="float-right btn-design" type="button" *ngIf="data" (click)="addEditUser()">Save</button>
+  </div>
+</form>
+<ngx-spinner></ngx-spinner>

@@ -1,0 +1,36 @@
+<kendo-menu *ngIf="loggedUser" id="nav">
+  <kendo-menu-item  text="Landing Pages">
+    <ng-template kendoMenuItemLinkTemplate let-item="item" let-index="index">
+        <span routerLink="Home" [kendoMenuItemLink]="index">
+           <img src="../../assets/logo.png" class="logo_size">
+        </span>
+    </ng-template>
+</kendo-menu-item>
+  <kendo-menu-item  text="Statistics">
+      <ng-template kendoMenuItemLinkTemplate let-item="item" let-index="index">
+          <span class="margin_left"  routerLink="statistic" [kendoMenuItemLink]="index">
+              {{ item.text }}
+          </span>
+      </ng-template>
+  </kendo-menu-item>
+  <kendo-menu-item  *ngIf="loggedUser.isAdmin" text="Admin Panel">
+      <ng-template  kendoMenuItemLinkTemplate let-item="item" let-index="index">
+          <span  class="margin_left" routerLink="admin" [kendoMenuItemLink]="index">
+              {{ item.text }}
+          </span>
+      </ng-template>
+  </kendo-menu-item>
+  <kendo-menu-item text="Logout">
+    <ng-template kendoMenuItemLinkTemplate let-item="item" let-index="index">
+        <span class = "user_name k-menu-link ">
+            Hey , {{ loggedUser.userName }}</span>
+
+        <span class="margin_right" (click)="authService.logout()" [kendoMenuItemLink]="index">
+            {{ item.text }}
+
+        </span>
+
+    </ng-template>
+</kendo-menu-item>
+
+</kendo-menu>

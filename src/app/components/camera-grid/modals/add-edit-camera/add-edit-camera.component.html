@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <div class="k-form-field">
+      <kendo-textbox-container class="input-modal-size" floatingLabel="Location Name">
+          <input kendoTextBox type="text" formControlName="locationName" />
+      </kendo-textbox-container>
+      <div class="alertSize" *ngIf="locationName.invalid && locationName.touched">Location Name
+          is required</div>
+  </div>
+
+  <div class="k-form-field">
+      <kendo-textbox-container class="input-modal-size" floatingLabel="Longitude">
+          <input kendoTextBox type="number" formControlName="longitude" />
+      </kendo-textbox-container>
+      <div class="alertSize" *ngIf="longitude.invalid && longitude.touched">Longitude
+          is required</div>
+  </div>
+  <div class="k-form-field">
+    <kendo-textbox-container class="input-modal-size" floatingLabel="Latitude">
+        <input kendoTextBox type="number" formControlName="latitude" />
+    </kendo-textbox-container>
+    <div class="alertSize" *ngIf="latitude.invalid && latitude.touched">Latitude
+        is required</div>
+</div>
+
+  <div>
+      <div class="alertSize" *ngIf="showAlertMsg">Please fill required fields</div>
+      <button class="float-right btn-design" type="button" *ngIf="!data" (click)="addEditCamera(true)">Add</button>
+      <button class="float-right btn-design" type="button" *ngIf="data" (click)="addEditCamera()">Save</button>
+  </div>
+</form>
+<ngx-spinner></ngx-spinner>

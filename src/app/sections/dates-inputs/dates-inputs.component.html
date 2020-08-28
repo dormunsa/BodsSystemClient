@@ -1,0 +1,10 @@
+<div *ngIf="!usingFromModal" class="mb-2 k-form-field">
+  <kendo-combobox class="input-size" [data]="datesList" [(ngModel)]="dateValue" (valueChange)="getDateRange($event)"
+      [textField]="'text'" [valueField]="'value'" [placeholder]="'Set date'"></kendo-combobox>
+  <div class="float-right" *ngIf="loading">
+      <span class="k-icon k-i-loading" style="font-size:25px;"></span>
+  </div>
+</div>
+
+<kendo-combobox *ngIf="usingFromModal" [data]="datesList" [(ngModel)]="dateValue" (valueChange)="getDateRange($event)"
+  [textField]="'text'" [valueField]="'value'" [placeholder]="'Set date'"></kendo-combobox>

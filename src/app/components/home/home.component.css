@@ -1,0 +1,12 @@
+.margin-top{
+  margin-top: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.button-config{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 13px;
+}

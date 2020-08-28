@@ -1,0 +1,24 @@
+<div class="main margin-top">
+  <form [formGroup]="form" >
+      <h3 class="title">Detection Statistics Report</h3>
+      <app-dates-inputs [form]="form"></app-dates-inputs>
+      <div class="mb-2 k-form-field">
+          <kendo-datepicker class="mr-2" [placeholder]="'Start date'" [format]="'dd/MM/yyyy HH:mm'"
+              formControlName="fromDate"></kendo-datepicker>
+          <kendo-datepicker [format]="'dd/MM/yyyy HH:mm'" [placeholder]="'End date'" formControlName="toDate">
+          </kendo-datepicker>
+      </div>
+      <button class="float-right btn-design" type="submit" (click)="getData()" >Generate Report</button>
+      <button class="float-right btn-design margin_right" (click)="getChart($event)" >Generate Chart</button>
+  </form>
+</div>
+<div class="margin-top" *ngIf="data && !showChart">
+  <app-report-grid  [currentForm]="currentForm" [data]="data" [fromReport]="true">
+  </app-report-grid>
+</div>
+<div class="margin-top" *ngIf="data && !showReport">
+  <app-detection-chart [data]="data">
+  </app-detection-chart>
+</div>
+
+<ngx-spinner></ngx-spinner>

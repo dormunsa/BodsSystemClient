@@ -1,0 +1,24 @@
+<div class="login-main">
+  <h2>Login <img src="../../assets/logo.png" class="logo_size"></h2>
+  <form [formGroup]="loginForm" (submit)="login()">
+
+      <div class="k-form-field">
+          <kendo-textbox-container floatingLabel="Enter User Name">
+              <input kendoTextBox formControlName="userName" />
+          </kendo-textbox-container>
+      </div>
+
+      <div class="k-form-field">
+          <kendo-textbox-container floatingLabel="Enter password">
+              <input kendoTextBox type="password" formControlName="password" />
+          </kendo-textbox-container>
+      </div>
+
+      <div class="mb-3">
+          <button kendoButton type="submit" class="float-right login-btn"
+              [disabled]="loginForm.invalid">Login</button>
+      </div>
+  </form>
+</div>
+
+<ngx-spinner></ngx-spinner>

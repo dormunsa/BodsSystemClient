@@ -1,0 +1,16 @@
+
+<div class="margin-top" *ngIf = "this.authService.loggedUserData">
+  <h2 class="title container-fluid">Run From Video</h2>
+  <button class="button-config" kendoButton icon="film" (click)="modalsManager.openSendUser()">Run From Video File</button>
+  <!-- <button class="button-config btn-design" type="button"  (click)="modalsManager.openSendUser()">Run From Video File</button> -->
+</div>
+<div class="margin-top" *ngIf = "this.authService.loggedUserData">
+  <app-camera-grid *ngIf = "this.authService.loggedUserData"></app-camera-grid>
+</div>
+<div class="margin-top" *ngIf = "this.authService.loggedUserData">
+  <app-detection-grid></app-detection-grid>
+</div>
+
+
+
+

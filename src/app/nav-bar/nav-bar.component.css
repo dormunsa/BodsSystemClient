@@ -1,0 +1,40 @@
+::ng-deep.k-menu.k-menu-horizontal:not(.k-context-menu) > .k-item > .k-link {
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  font-size: 28px;
+}
+
+::ng-deep.k-menu.k-menu-horizontal:not(.k-context-menu)
+  > .k-item
+  > .k-link:hover {
+  color: #fff;
+  font-weight: bold;
+
+}
+
+::ng-deep.k-menu.k-menu-horizontal:not(.k-context-menu) {
+  background-color: #232F3E;
+  box-shadow: 5px 5px 5px #888;
+  margin-bottom: 15px;
+}
+
+::ng-deep.k-menu.k-menu-horizontal:not(.k-context-menu) > .k-item:last-child {
+  margin-left: auto;
+}
+.logo_size{
+  height: 90px;
+  width: 90px;
+}
+.user_name{
+  color: #fff;
+  font-weight: bold;
+}
+.margin_left{
+  margin-left: 20px;
+}
+.margin_right{
+  margin-right: 25px;
+}
+.logout{
+  margin-left: 7px;
+}

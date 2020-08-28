@@ -1,0 +1,35 @@
+<ng-template #template let-anchor>
+  <span>{{ anchor.nativeElement.innerText }}</span>
+</ng-template>
+
+<div class="container-fluid" kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td tr"
+  (mouseover)="helperService.showTooltip($event,tooltipDir)">
+  <h2 class="title">Users</h2>
+  <kendo-grid *ngIf="data" #grid [data]="gridSettings.gridData"
+      [pageable]="{info: true, type:type, pageSizes:pageSizes}" [pageSize]="gridSettings.state.take"
+      [skip]="gridSettings.state.skip" [sort]="gridSettings.state.sort" [filter]="gridSettings.state.filter"
+      [sortable]="true" [resizable]="true" [filterable]="true" [reorderable]="true"
+      (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+    >
+
+      <ng-template kendoGridToolbarTemplate>
+          <button kendoButton icon="undo" (click)="deleteOrder()">Undo order</button>
+          <button kendoButton icon="plus-outline" *ngIf="authService.loggedUserData.isAdmin"
+              (click)="modalsManager.openAddEdiUser()">Add User</button>
+          <kendo-grid-column-chooser class="float-right"></kendo-grid-column-chooser>
+      </ng-template>
+
+      <kendo-grid-column *ngFor="let col of gridSettings.columnsConfig" [field]="col.field" [title]="col.title"
+          [width]="col.width" [filter]="col.filter" [filterable]="col.filterable" [hidden]="col.hidden">
+          <ng-template *ngIf="col.needTemplate" kendoGridCellTemplate let-dataItem>
+              <span *ngIf="col.title==='Action' && authService.loggedUserData.isAdmin">
+                  <button kendoButton icon="edit" (click)="modalsManager.openAddEdiUser(dataItem)" class="mr-1">Edit</button>
+                  <button kendoButton icon="delete" (click)="removeUser(dataItem)" class="mr-1">Remove</button>
+                  <button  icon="wrench" *ngIf="!dataItem.isAdmin" kendoButton (click)="SetAsAdmin(dataItem)" class="mr-1">Set As Admin</button>
+              </span>
+          </ng-template>
+      </kendo-grid-column>
+  </kendo-grid>
+</div>
+<ngx-spinner></ngx-spinner>
+

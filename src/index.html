@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bods</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/logo.png">
+</head>
+<body>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      var socket = io.connect('http://ec2-34-199-188-46.compute-1.amazonaws.com:5000');
+
+      socket.on('connect', function() {
+      });
+
+      socket.on('message', function(msg) {
+        var h1 = $('<h1>')
+        var img = $('<img>');
+        img.attr('src', msg);
+        img.appendTo('body');
+        img.addClass('balloon-alert');
+        img.addClass('image-size');
+        h1.text('Balloon Detected');
+        h1.appendTo('body');
+        h1.addClass('balloon-alert');
+        img.insertAfter( "#nav" );
+        h1.insertAfter( "#nav" );
+        $( ".balloon-alert" ).delay(4000).fadeOut()
+      });
+
+    });
+    </script>
+  <app-root></app-root>
+
+</body>
+</html>
